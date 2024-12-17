@@ -1,0 +1,9 @@
+---
+title: "My Wiki"
+listing:
+  contents: notes
+  sort: "date desc"
+  type: table
+  sort-ui: true
+  filter-ui: true
+---
