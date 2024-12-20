@@ -48,6 +48,27 @@ an edge or a node id to a set of property-value pairs.
 
 ## Graph patterns
 
+:::{.equation-box}
+
+***Definition***
+
+We define variables $\textbf{Var}$ ranging over (but disjoint from $\textbf{Con}\cap\textbf{Var}=\varnothing$) the set
+of constants. We define terms as $\textbf{Term} = \textbf{Con}\cup\textbf{Var}$. Then, a basic directed edge-labelled
+graph pattern is a tuple $Q=(V,E,L)$, where $V\subseteq\textbf{Term}$ is a set of node terms, $L\subseteq\textbf{Term}$
+is a set of edge terms, and $E\subseteq V\times L\times V$ is a set of edges.
+
+:::
+
+To evaluate a graph pattern we need to, first, define a mapping $\mu:\textbf{Var}\mapsto\textbf{Con}$ from variables to constants, whose domain is denoted by $dom(\mu)$. Let $\textbf{Var}(Q)$ denote all the variables appearing in $Q$.
+
+:::{.equation-box}
+
+***Definition***
+
+Let $Q$ be a basic graph pattern and $G$ be a data graph, in the same model. Then, we define the evaluation of the basic graph pattern $Q$ over data graph $G$, denoted $Q(G)$, to be the set of mappings $Q(G)=\{\mu|\mu(Q)\subseteq G \text{ and } dom(\mu)=\textbf{Var}(Q)\}$
+
+:::
+
 * Unary operators include projection:
     * (𝜋) to output a subset of columns
     * (𝜎) selection  to output a subset of rows matching a given condition
@@ -71,6 +92,9 @@ an edge or a node id to a set of property-value pairs.
       second table
     * left-join (⟕, aka optional) performs a join but keeping rows from the first table without a compatible row in the
       second table
+      
+
+![Complex graph patterns (Definition 2.8)](../../images/knowledge_graphs/complex_graph_pattern.png){width=75%}
 
 ## Schema
 

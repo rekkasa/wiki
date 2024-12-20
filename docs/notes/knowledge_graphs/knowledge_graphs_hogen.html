@@ -179,6 +179,15 @@ window.Quarto = {
 </section>
 <section id="graph-patterns" class="level2">
 <h2 class="anchored" data-anchor-id="graph-patterns">Graph patterns</h2>
+<div class="equation-box">
+<p><strong><em>Definition</em></strong></p>
+<p>We define variables <span class="math inline">\(\textbf{Var}\)</span> ranging over (but disjoint from <span class="math inline">\(\textbf{Con}\cap\textbf{Var}=\varnothing\)</span>) the set of constants. We define terms as <span class="math inline">\(\textbf{Term} = \textbf{Con}\cup\textbf{Var}\)</span>. Then, a basic directed edge-labelled graph pattern is a tuple <span class="math inline">\(Q=(V,E,L)\)</span>, where <span class="math inline">\(V\subseteq\textbf{Term}\)</span> is a set of node terms, <span class="math inline">\(L\subseteq\textbf{Term}\)</span> is a set of edge terms, and <span class="math inline">\(E\subseteq V\times L\times V\)</span> is a set of edges.</p>
+</div>
+<p>To evaluate a graph pattern we need to, first, define a mapping <span class="math inline">\(\mu:\textbf{Var}\mapsto\textbf{Con}\)</span> from variables to constants, whose domain is denoted by <span class="math inline">\(dom(\mu)\)</span>. Let <span class="math inline">\(\textbf{Var}(Q)\)</span> denote all the variables appearing in <span class="math inline">\(Q\)</span>.</p>
+<div class="equation-box">
+<p><strong><em>Definition</em></strong></p>
+<p>Let <span class="math inline">\(Q\)</span> be a basic graph pattern and <span class="math inline">\(G\)</span> be a data graph, in the same model. Then, we define the evaluation of the basic graph pattern <span class="math inline">\(Q\)</span> over data graph <span class="math inline">\(G\)</span>, denoted <span class="math inline">\(Q(G)\)</span>, to be the set of mappings <span class="math inline">\(Q(G)=\{\mu|\mu(Q)\subseteq G \text{ and } dom(\mu)=\textbf{Var}(Q)\}\)</span></p>
+</div>
 <ul>
 <li>Unary operators include projection:
 <ul>
@@ -207,6 +216,12 @@ window.Quarto = {
 <li>left-join (⟕, aka optional) performs a join but keeping rows from the first table without a compatible row in the second table</li>
 </ul></li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/knowledge_graphs/complex_graph_pattern.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Complex graph patterns (Definition 2.8)</figcaption>
+</figure>
+</div>
 </section>
 <section id="schema" class="level2">
 <h2 class="anchored" data-anchor-id="schema">Schema</h2>

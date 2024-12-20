@@ -8,3 +8,7 @@
   border-radius: 5px;        
   font-size: 1em;
 }
+
+.MathJax, .MathJax_Display  {
+    font-size: 90%  !important;
+}
