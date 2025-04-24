@@ -1,0 +1,48 @@
+---
+title: "Install multiple versions of `R`"
+description: ""
+format: html
+execute:
+  echo: false
+---
+
+## Download R source code
+
+Download `R` source code from [https://cran.rstudio.com/src/base/](https://cran.rstudio.com/src/base/) and untar
+it (you will need to replace X with the version of R being installed).
+
+```bash
+
+cd $HOME/src
+wget https://cran.rstudio.com/src/base/R-X/R-X.X.X.tar.gz
+tar -xzvf ./R.X.X.X.tar.gz
+
+```
+
+## Configuration
+
+Once the source is downloaded, from within the extracted source directory, execute these commands:
+
+```bash
+
+sudo ./configure --prefix=/opt/R/X.X.X --enable-R-shlib
+sudo make
+sudo make install
+
+```
+
+## Point to new R version
+
+After R has been built from source, you need to point the current `R` and `Rscript` commands to the new version. The best approach is to place those in a directory inside `$HOME/.local/bin`
+
+```bash
+
+ln -sf /opt/R/X.X.X/bin/R $HOME/.local/bin/R
+ln -sf /opt/R/X.X.X/bin/Rscript $HOME/.local/bin/Rscript
+
+
+```
+
+## Reference
+
+[https://support.posit.co/hc/en-us/articles/215488098-Compiling-R-for-Multiple-installations-of-R-on-Linux](https://support.posit.co/hc/en-us/articles/215488098-Compiling-R-for-Multiple-installations-of-R-on-Linux)

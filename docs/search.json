@@ -4,7 +4,42 @@
     "href": "index.html",
     "title": "My Wiki",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nKnowledge graphs book (Hogen et al)\n\n\n \n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nInstall multiple versions of R\n\n\n \n\n\n\n\nKnowledge graphs book (Hogen et al)\n\n\n \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "notes/system/install_r_versions.html",
+    "href": "notes/system/install_r_versions.html",
+    "title": "Install multiple versions of R",
+    "section": "",
+    "text": "Download R source code from https://cran.rstudio.com/src/base/ and untar it (you will need to replace X with the version of R being installed).\n\ncd $HOME/src\nwget https://cran.rstudio.com/src/base/R-X/R-X.X.X.tar.gz\ntar -xzvf ./R.X.X.X.tar.gz"
+  },
+  {
+    "objectID": "notes/system/install_r_versions.html#download-r-source-code",
+    "href": "notes/system/install_r_versions.html#download-r-source-code",
+    "title": "Install multiple versions of R",
+    "section": "",
+    "text": "Download R source code from https://cran.rstudio.com/src/base/ and untar it (you will need to replace X with the version of R being installed).\n\ncd $HOME/src\nwget https://cran.rstudio.com/src/base/R-X/R-X.X.X.tar.gz\ntar -xzvf ./R.X.X.X.tar.gz"
+  },
+  {
+    "objectID": "notes/system/install_r_versions.html#configuration",
+    "href": "notes/system/install_r_versions.html#configuration",
+    "title": "Install multiple versions of R",
+    "section": "Configuration",
+    "text": "Configuration\nOnce the source is downloaded, from within the extracted source directory, execute these commands:\n\nsudo ./configure --prefix=/opt/R/X.X.X --enable-R-shlib\nsudo make\nsudo make install"
+  },
+  {
+    "objectID": "notes/system/install_r_versions.html#point-to-new-r-version",
+    "href": "notes/system/install_r_versions.html#point-to-new-r-version",
+    "title": "Install multiple versions of R",
+    "section": "Point to new R version",
+    "text": "Point to new R version\nAfter R has been built from source, you need to point the current R and Rscript commands to the new version. The best approach is to place those in a directory inside $HOME/.local/bin\n\nln -sf /opt/R/X.X.X/bin/R $HOME/.local/bin/R\nln -sf /opt/R/X.X.X/bin/Rscript $HOME/.local/bin/Rscript"
+  },
+  {
+    "objectID": "notes/system/install_r_versions.html#reference",
+    "href": "notes/system/install_r_versions.html#reference",
+    "title": "Install multiple versions of R",
+    "section": "Reference",
+    "text": "Reference\nhttps://support.posit.co/hc/en-us/articles/215488098-Compiling-R-for-Multiple-installations-of-R-on-Linux"
   },
   {
     "objectID": "notes/knowledge_graphs/knowledge_graphs_hogen.html",

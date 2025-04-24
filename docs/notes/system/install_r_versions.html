@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="This is a test">
 
-<title>Knowledge graphs book (Hogen et al) – wiki</title>
+<title>Install multiple versions of R – wiki</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -67,35 +100,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -112,11 +116,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#types-of-graphs-models" id="toc-types-of-graphs-models" class="nav-link active" data-scroll-target="#types-of-graphs-models">Types of graphs (models)</a></li>
-  <li><a href="#graph-patterns" id="toc-graph-patterns" class="nav-link" data-scroll-target="#graph-patterns">Graph patterns</a></li>
-  <li><a href="#schema" id="toc-schema" class="nav-link" data-scroll-target="#schema">Schema</a></li>
-  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification">Identification</a></li>
-  <li><a href="#ontologies" id="toc-ontologies" class="nav-link" data-scroll-target="#ontologies">Ontologies</a></li>
+  <li><a href="#download-r-source-code" id="toc-download-r-source-code" class="nav-link active" data-scroll-target="#download-r-source-code">Download R source code</a></li>
+  <li><a href="#configuration" id="toc-configuration" class="nav-link" data-scroll-target="#configuration">Configuration</a></li>
+  <li><a href="#point-to-new-r-version" id="toc-point-to-new-r-version" class="nav-link" data-scroll-target="#point-to-new-r-version">Point to new R version</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
 </nav>
     </div>
@@ -125,14 +128,9 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Knowledge graphs book (Hogen et al)</h1>
+<h1 class="title">Install multiple versions of <code>R</code></h1>
 </div>
 
-<div>
-  <div class="description">
-    This is a test
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -147,116 +145,33 @@ window.Quarto = {
 </header>
 
 
-<section id="types-of-graphs-models" class="level2">
-<h2 class="anchored" data-anchor-id="types-of-graphs-models">Types of graphs (models)</h2>
-<ul>
-<li><strong>Directed edge-labelled graphs</strong>: A directed edge-labelled graph (also known as a multi-relational graph) is defined as a set of nodes and a set of directed labelled edges between those nodes. In the case of knowledge graphs, nodes are used to represent entities and edges are used to represent (binary) relations between those entities</li>
-</ul>
-<div class="equation-box">
-<p><strong><em>Definition</em></strong></p>
-<p>Let <span class="math inline">\(\textbf{Con}\)</span> be a countably infinite set of constants. A directed edge-labelled graph is a tuple <span class="math inline">\(G=(V,E,L)\)</span>, where <span class="math inline">\(V\subseteq\textbf{Con}\)</span> is a set of nodes, <span class="math inline">\(L\subseteq\textbf{Con}\)</span>, and <span class="math inline">\(E\subseteq V\times L\times V\)</span> is a set of edges.</p>
-</div>
-<ul>
-<li><strong>Heterogeneous graphs</strong>: A heterogeneous graph (or heterogeneous information network) is a graph where each node and edge is assigned one type.</li>
-</ul>
-<div class="equation-box">
-<p><strong><em>Definition</em></strong></p>
-<p>A heterogeneous graph is a tuple <span class="math inline">\(G=(V,E,L,l)\)</span>, where <span class="math inline">\(V\subseteq\textbf{Con}\)</span> is a set of nodes, <span class="math inline">\(L\subseteq\textbf{Con}\)</span> is a set of edge/node labels, <span class="math inline">\(E\subseteq V\times L\times V\)</span> is a set of edges, and <span class="math inline">\(l:V\mapsto L\)</span> maps each node to a label.</p>
-</div>
-<ul>
-<li><strong>Property graphs</strong>: A property graph allows a set of property–value pairs and a label to be associated with both nodes and edges.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/knowledge_graphs/property_graph.png" class="img-fluid figure-img"></p>
-<figcaption>Property graph.</figcaption>
-</figure>
-</div>
-<div class="equation-box">
-<p><strong><em>Definition</em></strong></p>
-<p>A property graph is a tuple <span class="math inline">\(G=(V,E,L,P,U,e,l,p)\)</span>, where <span class="math inline">\(V\subseteq\textbf{Con}\)</span> is a set of node ids, <span class="math inline">\(E\subseteq\textbf{Con}\)</span> is a set of edge ids, <span class="math inline">\(L\subseteq\textbf{Con}\)</span> is a set of labels, <span class="math inline">\(P\subseteq\textbf{Con}\)</span> is a set of properties, <span class="math inline">\(U\subseteq\textbf{Con}\)</span> is a set of values, <span class="math inline">\(e:E\mapsto V\times V\)</span> maps an edge id to a pair of node ids, <span class="math inline">\(l:V\cup E\mapsto 2^L\)</span> maps an edge or a node id to a set of labels, and <span class="math inline">\(p:V\cup E\mapsto 2^{P\times U}\)</span> maps an edge or a node id to a set of property-value pairs.</p>
-</div>
+<section id="download-r-source-code" class="level2">
+<h2 class="anchored" data-anchor-id="download-r-source-code">Download R source code</h2>
+<p>Download <code>R</code> source code from <a href="https://cran.rstudio.com/src/base/">https://cran.rstudio.com/src/base/</a> and untar it (you will need to replace X with the version of R being installed).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/src</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://cran.rstudio.com/src/base/R-X/R-X.X.X.tar.gz</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xzvf</span> ./R.X.X.X.tar.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="graph-patterns" class="level2">
-<h2 class="anchored" data-anchor-id="graph-patterns">Graph patterns</h2>
-<div class="equation-box">
-<p><strong><em>Definition</em></strong></p>
-<p>We define variables <span class="math inline">\(\textbf{Var}\)</span> ranging over (but disjoint from <span class="math inline">\(\textbf{Con}\cap\textbf{Var}=\varnothing\)</span>) the set of constants. We define terms as <span class="math inline">\(\textbf{Term} = \textbf{Con}\cup\textbf{Var}\)</span>. Then, a basic directed edge-labelled graph pattern is a tuple <span class="math inline">\(Q=(V,E,L)\)</span>, where <span class="math inline">\(V\subseteq\textbf{Term}\)</span> is a set of node terms, <span class="math inline">\(L\subseteq\textbf{Term}\)</span> is a set of edge terms, and <span class="math inline">\(E\subseteq V\times L\times V\)</span> is a set of edges.</p>
-</div>
-<p>To evaluate a graph pattern we need to, first, define a mapping <span class="math inline">\(\mu:\textbf{Var}\mapsto\textbf{Con}\)</span> from variables to constants, whose domain is denoted by <span class="math inline">\(dom(\mu)\)</span>. Let <span class="math inline">\(\textbf{Var}(Q)\)</span> denote all the variables appearing in <span class="math inline">\(Q\)</span>.</p>
-<div class="equation-box">
-<p><strong><em>Definition</em></strong></p>
-<p>Let <span class="math inline">\(Q\)</span> be a basic graph pattern and <span class="math inline">\(G\)</span> be a data graph, in the same model. Then, we define the evaluation of the basic graph pattern <span class="math inline">\(Q\)</span> over data graph <span class="math inline">\(G\)</span>, denoted <span class="math inline">\(Q(G)\)</span>, to be the set of mappings <span class="math inline">\(Q(G)=\{\mu|\mu(Q)\subseteq G \text{ and } dom(\mu)=\textbf{Var}(Q)\}\)</span></p>
-</div>
-<ul>
-<li>Unary operators include projection:
-<ul>
-<li>(𝜋) to output a subset of columns</li>
-<li>(𝜎) selection to output a subset of rows matching a given condition</li>
-<li>(𝜌) renaming of columns</li>
-</ul></li>
-<li>Binary operators include:
-<ul>
-<li>union (∪) to merge the rows of two tables into one table</li>
-<li>difference (−) to remove the rows from the first table present in the second table</li>
-<li>and joins (Z) to extend the rows of one table with rows from the other table that satisfy a join condition.</li>
-</ul></li>
-<li>Selection and join conditions typically include:
-<ul>
-<li>equalities (=)</li>
-<li>inequalities (≤)</li>
-<li>negation (¬)</li>
-<li>disjunction (∨)</li>
-<li>etc…</li>
-</ul></li>
-<li>From these operators, we can further define other (syntactic) operators:
-<ul>
-<li>intersection (∩) outputs rows in both tables</li>
-<li>anti-join (▷, aka not exists) outputs rows from the first table for which there are no join-compatible rows in the second table</li>
-<li>left-join (⟕, aka optional) performs a join but keeping rows from the first table without a compatible row in the second table</li>
-</ul></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/knowledge_graphs/complex_graph_pattern.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Complex graph patterns (Definition 2.8)</figcaption>
-</figure>
-</div>
+<section id="configuration" class="level2">
+<h2 class="anchored" data-anchor-id="configuration">Configuration</h2>
+<p>Once the source is downloaded, from within the extracted source directory, execute these commands:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./configure <span class="at">--prefix</span><span class="op">=</span>/opt/R/X.X.X <span class="at">--enable-R-shlib</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="schema" class="level2">
-<h2 class="anchored" data-anchor-id="schema">Schema</h2>
-<ul>
-<li>Semantic schema:
-<ul>
-<li>Defines the meaning of high level terms (aka <em>vocabulary</em> or <em>terminology</em>), facilitating reasoning over graphs.</li>
-<li>Groupings of nodes into <em>Classes</em>.</li>
-<li>Semantic edge labels are also called <em>properties</em>. Edge labels can also form hierarchies of <em>properties</em> and <em>sub-properties</em>.</li>
-<li>A <em>domain of properties</em> indicates the class(es) of entities for nodes <strong>from</strong> which edges with these properties extend.</li>
-<li>A <em>range of properties</em> indicates the classes of entities for nodes <strong>to</strong> which edges with these properties extend.</li>
-</ul></li>
-</ul>
+<section id="point-to-new-r-version" class="level2">
+<h2 class="anchored" data-anchor-id="point-to-new-r-version">Point to new R version</h2>
+<p>After R has been built from source, you need to point the current <code>R</code> and <code>Rscript</code> commands to the new version. The best approach is to place those in a directory inside <code>$HOME/.local/bin</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sf</span> /opt/R/X.X.X/bin/R <span class="va">$HOME</span>/.local/bin/R</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sf</span> /opt/R/X.X.X/bin/Rscript <span class="va">$HOME</span>/.local/bin/Rscript</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="identification" class="level2">
-<h2 class="anchored" data-anchor-id="identification">Identification</h2>
-<ul>
-<li><p>Persistent identifiers (PIDs) uniquely identify an entity. Prominent examples of PID schemes include Digital Object Identifiers (DOIs) for papers, ORCID IDs for authors, International Standard Book Numbers (ISBNs) for books, Alpha-2 codes for counties.</p></li>
-<li><p>Rather than adopt the Uniform Resource Locators (URLs) used to identify the location of information resources such as webpages, <em>RDF 1.1</em> proposes to use Internationalised Resource Identifiers (IRIs) to identify non-information resources. For example, in the RDF representation of the Wikidata while the URL https://www.wikidata.org/<strong><em>wiki</em></strong>/Q2887 refers to a webpage that can be loaded in a browser providing human-readable meta-data about Santiago, the IRI http://www.wikidata.org/<strong><em>entity</em></strong>/Q2887 refers to the city itself. Distinguishing the identifiers for both resources (the webpage and the city itself) avoids naming clashes.</p></li>
-<li><p>External identity links. Problem when different sources refer to the same entity. Mitigate by:</p>
-<ul>
-<li>Associate with uniquely-identifying information in the graph</li>
-<li>Use identity links stating that local entities are the same as external ones (<em>owl:sameAs</em>)</li>
-</ul></li>
-<li><p>Datatypes are values such as dates, numbers etc that does not make sense to assign an IRI. RDF utilizes XML Schema Datatypes (XSD) where a datatype node is given a pair <em>(l,d)</em>, where <em>l</em> is a lexical string and <em>d</em> is an IRI denoting the datatype, e.g.&nbsp;<em>xsd:dateTime</em>. <strong>:Important:</strong> Datatype nodes in RDF are not allowed to have outgoing edges.</p></li>
-<li><p>Lexicalization: Often, node identifiers are not designed to be human-interpretable. It is common to add edges that provide human-interpretable labels for nodes, e.g.&nbsp;<em>[wd:Q2887] –(rdfs:label)–&gt; [“Santiago”]</em>.</p></li>
-<li><p>Existential nodes: In the case of incomplete information –&gt; define empty nodes. Authors call for minimized usage of existential nodes.</p></li>
-</ul>
-</section>
-<section id="ontologies" class="level2">
-<h2 class="anchored" data-anchor-id="ontologies">Ontologies</h2>
-<ul>
-<li><p><strong>Definition</strong>: An ontology is a concrete, formal representation of what terms mean within the scope they are used. It leads to consistent use of terms and consistent modeling in a KG. If an ontology is adopted by multiple KGs, it leads to increased interoperability among them. One of the most popular ontology languages is the Web Ontology Language (OWL), recommended by W3C and compatible with RDF graphs.</p></li>
-<li><p><strong>Interpretation</strong>: Abstractly, interpretation can be thought of comprising of two elements: a domain graph and a mapping from the terms (nodes and edges) of the data graph to those of the domain graph,</p></li>
-</ul>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<p><a href="https://support.posit.co/hc/en-us/articles/215488098-Compiling-R-for-Multiple-installations-of-R-on-Linux">https://support.posit.co/hc/en-us/articles/215488098-Compiling-R-for-Multiple-installations-of-R-on-Linux</a></p>
 
 
 </section>
